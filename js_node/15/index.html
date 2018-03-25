@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<table id="table">
+		</table>
+		
+		<script type="text/javascript">		
+			function buildHeader(obj){
+				var row = "<tr>";
+				
+					for(var propertyName in obj) {
+						row += "<td>" + propertyName + "</td>";
+					}
+					
+				row += "</tr>";
+				return row;
+			}
+			
+			function buildRow(obj){
+				var row = "<tr>";
+				
+					for(var propertyName in obj) {
+						row += "<td>" + obj[propertyName] + "</td>";
+					}
+					
+				row += "</tr>";
+				return row;
+			}
+			
+			  window.onload = function() {
+				var jsonString = '[{"ccy":"EUR","base_ccy":"UAH","buy":"32.42308","sale":"32.42308"},{"ccy":"RUR","base_ccy":"UAH","buy":"0.46077","sale":"0.46077"},{"ccy":"USD","base_ccy":"UAH","buy":"26.27265","sale":"26.27265"},{"ccy":"BTC","base_ccy":"USD","buy":"8086.1590","sale":"8937.3336"}]';
+				var jsonObj = JSON.parse(jsonString);
+				
+				var table = document.getElementById("table");
+				table.innerHTML += buildHeader(jsonObj[0]);
+				for(var i in jsonObj){
+					table.innerHTML += buildRow(jsonObj[i]);
+				}
+			  };
+		</script>
+	</body>
+</html>
