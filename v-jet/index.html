@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>V-JET TEST</title>
+    <script src="main.js"></script>
+
+    <style>
+    #form {
+        width: 265px; 
+        background-color: thistle;
+        padding: 40px;
+    }
+    .container {
+        padding-top: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .task {
+        width: 50%;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    .odd {background-color: pink;}
+    .even {background-color: palegreen}
+
+    #prodSection {
+        width: 80%;
+    }
+    .prodCard {
+        display: inline-block;
+        border: 1px solid lightgrey;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        font-family: sans-serif;
+        color: dimgray;
+        cursor: pointer;
+    }
+    .priceTag {
+        color: black;
+    }
+    .optionsDiv {
+        text-align: left;
+    }
+    article p {margin: 5px}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="task"><h3>Task 1</h3>
+            Write a function that find the most frequent character in a string (case insensitive)</div>
+        <code style="width: 40%;">  
+        var getMax = function (str) {<br>
+            var max = 0,<br>
+                maxChar = '';<br>
+            str.split('').forEach(function(char){<br>
+            if(str.split(char).length > max) {<br>
+                max = str.split(char).length;<br>
+                maxChar = char;<br>
+                }<br>
+            });<br>
+            return maxChar;<br>
+        };<br>
+        
+        </code>
+    </div>
+      
+    <div class="container">
+        <div class="task"><h3>Task 2</h3>
+            Create simple HTML form with text field and buttons “Set” and “Clear”.
+            On submit form set item to local storage with key “num23” and value from the text field.  </div>
+        <p id="num23"></p>
+        <form action="" id="form">
+            <input type="number" name="field" id="digitfield" onkeyup="activeBtn()">
+            <input type="submit" value="Set" id="digitset"  disabled >
+            <input type="reset" value="Clear" id="digitclear">
+        </form> 
+    </div>
+
+
+
+    <div class="container">
+            <div class="task"><h3>Task 3</h3>
+                Write script that will parse query params from url and transform it into object 
+                 with according key and value.</div>
+        <code style="width: 40%;"> 
+        var urlParams;<br>
+        (window.onpopstate = function () {<br>
+            var match,<br>
+                pl     = /\+/g,  <br>
+                search = /([^&=]+)=?([^&]*)/g,<br>
+                decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },<br>
+                query  = window.location.search.substring(1);<br>
+
+            urlParams = {};<br>
+            while (match = search.exec(query))<br>
+            urlParams[decode(match[1])] = decode(match[2]);<br>
+        })();    </code>
+    </div>
+
+    <div class="container">
+            <div class="task"><h3>Task 4</h3>
+                Write script that displays a list of products from server response data. 
+                Server returns encoded JSON string in base64. </div>
+
+                <section id='prodSection'>
+                    <div id='prodOpt'></div>
+                </section>
+                
+    </div>
+
+</body>
+</html>
